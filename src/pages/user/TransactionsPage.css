@@ -48,3 +48,11 @@
     color: #ef4444; /* Red */
     font-weight: 500;
   }
+  /* Subtle polish for cards/tables */
+:root {
+  --ring-shadow: 0 1px 1px rgba(0,0,0,.04), 0 8px 24px rgba(99, 102, 241, .06);
+}
+table { border-spacing: 0; }
+thead th { position: sticky; top: 0; backdrop-filter: blur(6px); }
+.bg-white\/80 { box-shadow: var(--ring-shadow); }
+

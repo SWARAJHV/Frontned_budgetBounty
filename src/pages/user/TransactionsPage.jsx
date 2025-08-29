@@ -1,13 +1,6 @@
+// TransactionsPage.jsx
 import React, { useEffect, useState } from "react";
 import api from "../../api/client";
-
-const statusColors = {
-  SUCCESS: "text-green-600",
-  FAILED: "text-red-600",
-  REFUNDED: "text-blue-600",
-  PENDING: "text-orange-500",
-  EXPIRED: "text-gray-500",
-};
 
 export default function TransactionsPage({ user }) {
   const [rewards, setRewards] = useState([]);
@@ -20,105 +13,121 @@ export default function TransactionsPage({ user }) {
           api.get(`/rewards/user/${user.id}`),
           api.get(`/redemptions/user/${user.id}`),
         ]);
-
         setRewards(Array.isArray(rewardsRes.data) ? rewardsRes.data : rewardsRes.data.content || []);
         setRedemptions(Array.isArray(redemptionsRes.data) ? redemptionsRes.data : redemptionsRes.data.content || []);
       } catch (err) {
         console.error("Error fetching transactions:", err);
       }
     };
-
     fetchData();
   }, [user.id]);
 
-  const truncate = (str, len = 40) => str?.length > len ? str.slice(0, len) + "…" : str;
+  const truncate = (s, n = 48) => (s?.length > n ? s.slice(0, n) + "…" : s);
 
-  // Helper function to determine points display for redemptions
-  const getRedemptionPointsDisplay = (redemption) => {
-    const points = redemption.pointsSpent || 0;
-    
-    if (redemption.status === "FAILED" || redemption.status === "REFUNDED") {
-      return {
-        points: `+${points} pts`,
-        className: "text-green-700 font-semibold"
-      };
-    } else {
-      return {
-        points: `-${points} pts`,
-        className: "text-red-700 font-semibold"
-      };
+  const redemptionPointsChip = (r) => {
+    const pts = r.pointsSpent || 0;
+    if (r.status === "FAILED" || r.status === "REFUNDED") {
+      return { text: `+${pts} pts`, cls: "chip chip--green" };
     }
+    return { text: `-${pts} pts`, cls: "chip chip--red" };
   };
 
+  const statusClass = (s) =>
+    ({
+      SUCCESS: "chip chip--success",
+      FAILED: "chip chip--failed",
+      REFUNDED: "chip chip--refunded",
+      PENDING: "chip chip--pending",
+      EXPIRED: "chip chip--expired",
+    }[s] || "chip");
+
   return (
-    <div className="p-6 space-y-8">
-      <h2 className="text-2xl font-bold mb-4">Your Transactions</h2>
+    <div className="transactions-page">
+      <div className="tp-header">
+        <h2>Your Transactions</h2>
+        <p>Track rewards earned and redemption history.</p>
+      </div>
 
-      {/* Rewards Table */}
-      <div>
-        <h3 className="text-xl font-semibold mb-2">🎉 Rewards Earned</h3>
+      {/* Rewards */}
+      <section className="tp-card">
+        <div className="tp-card__head">
+          <span className="tp-emoji">🎉</span>
+          <h3>Rewards Earned</h3>
+        </div>
+
         {rewards.length === 0 ? (
-          <p className="text-gray-500">No rewards earned yet.</p>
+          <div className="tp-empty">No rewards earned yet.</div>
         ) : (
-          <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="p-2 text-left">Source</th>
-                <th className="p-2 text-left">Points</th>
-                <th className="p-2 text-left">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rewards.map((r) => (
-                <tr key={r.rewardId} className="border-t hover:bg-gray-50 transition-colors">
-                  <td className="p-2" title={r.description}>{truncate(r.description)}</td>
-                  <td className="p-2 text-green-700 font-semibold">+{r.points} pts</td>
-                  <td className="p-2">{r.earnedAt ? new Date(r.earnedAt).toLocaleString() : "—"}</td>
+          <div className="tp-table-wrap">
+            <table className="transaction-table">
+              <thead>
+                <tr>
+                  <th>Source</th>
+                  <th>Points</th>
+                  <th>Date</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
-
-      {/* Redemptions Table */}
-      <div>
-        <h3 className="text-xl font-semibold mb-2">💳 Redemptions</h3>
-        {redemptions.length === 0 ? (
-          <p className="text-gray-500">No redemptions yet.</p>
-        ) : (
-          <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="p-2 text-left">Item</th>
-                <th className="p-2 text-left">Points</th>
-                <th className="p-2 text-left">Status</th>
-                <th className="p-2 text-left">Date</th>
-                <th className="p-2 text-left">Code</th>
-              </tr>
-            </thead>
-            <tbody>
-              {redemptions.map((r) => {
-                const pointsDisplay = getRedemptionPointsDisplay(r);
-                
-                return (
-                  <tr key={r.redemptionId} className="border-t hover:bg-gray-50 transition-colors">
-                    <td className="p-2" title={r.catalogItemName || `Catalog Item #${r.catalogItemId}`}>
-                      {truncate(r.catalogItemName || `Catalog Item #${r.catalogItemId}`)}
+              </thead>
+              <tbody>
+                {rewards.map((r) => (
+                  <tr key={r.rewardId}>
+                    <td title={r.description}>
+                      <span className="cell-title">{truncate(r.description)}</span>
                     </td>
-                    <td className={`p-2 ${pointsDisplay.className}`}>
-                      {pointsDisplay.points}
+                    <td>
+                      <span className="chip chip--green">+{r.points} pts</span>
                     </td>
-                    <td className={`p-2 font-semibold ${statusColors[r.status]}`}>{r.status}</td>
-                    <td className="p-2">{r.redeemedAt ? new Date(r.redeemedAt).toLocaleString() : "—"}</td>
-                    <td className="p-2">{r.redemptionCode || "—"}</td>
+                    <td className="muted">{r.earnedAt ? new Date(r.earnedAt).toLocaleString() : "—"}</td>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
-      </div>
+      </section>
+
+      {/* Redemptions */}
+      <section className="tp-card">
+        <div className="tp-card__head">
+          <span className="tp-emoji">💳</span>
+          <h3>Redemptions</h3>
+        </div>
+
+        {redemptions.length === 0 ? (
+          <div className="tp-empty">No redemptions yet.</div>
+        ) : (
+          <div className="tp-table-wrap">
+            <table className="transaction-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Points</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                {redemptions.map((r) => {
+                  const chip = redemptionPointsChip(r);
+                  return (
+                    <tr key={r.redemptionId}>
+                      <td title={r.catalogItemName || `Catalog Item #${r.catalogItemId}`}>
+                        <span className="cell-title">
+                          {truncate(r.catalogItemName || `Catalog Item #${r.catalogItemId}`)}
+                        </span>
+                      </td>
+                      <td><span className={chip.cls}>{chip.text}</span></td>
+                      <td><span className={statusClass(r.status)}>{r.status}</span></td>
+                      <td className="muted">{r.redeemedAt ? new Date(r.redeemedAt).toLocaleString() : "—"}</td>
+                      <td className="code">{r.redemptionCode || "—"}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </section>
     </div>
   );
 }
