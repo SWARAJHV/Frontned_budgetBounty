@@ -1,0 +1,590 @@
+.admin-app {
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f5f3ff 0%, #f9fafb 100%);
+}
+
+.admin-app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.admin-main-content {
+  margin-left: 280px;
+  flex: 1;
+  min-height: 100vh;
+  width: calc(100vw - 280px);
+  background: transparent;
+}
+
+.admin-content-wrapper {
+  padding: 40px 60px;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Page Header */
+.admin-app .page-header {
+  margin-bottom: 40px;
+}
+
+.admin-app .page-title {
+  margin: 0 0 8px 0;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.admin-app .page-subtitle {
+  margin: 0;
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+/* Grid System */
+.admin-app .grid {
+  display: grid;
+  gap: 32px;
+  width: 100%;
+}
+
+.admin-app .grid-cols-1 { 
+  grid-template-columns: 1fr; 
+}
+
+.admin-app .grid-cols-2 { 
+  grid-template-columns: repeat(2, 1fr); 
+}
+
+.admin-app .grid-cols-4 { 
+  grid-template-columns: repeat(4, 1fr); 
+}
+
+.admin-app .md\:grid-cols-2 { 
+  grid-template-columns: repeat(2, 1fr); 
+}
+
+.admin-app .md\:grid-cols-4 { 
+  grid-template-columns: repeat(4, 1fr); 
+}
+
+.admin-app .lg\:grid-cols-2 { 
+  grid-template-columns: repeat(2, 1fr); 
+}
+
+.admin-app .lg\:grid-cols-4 { 
+  grid-template-columns: repeat(4, 1fr); 
+}
+
+/* Stats Cards */
+.admin-app .stats-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  min-height: 160px;
+  position: relative;
+}
+
+.admin-app .stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-app .stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.admin-app .stats-info {
+  flex: 1;
+}
+
+.admin-app .stats-label {
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.admin-app .stats-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #7c3aed;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.admin-app .stats-icon {
+  width: 64px;
+  height: 64px;
+  background: #f5f3ff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.admin-app .stat-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.admin-app .stats-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-app .stats-period {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Status Badges */
+.admin-app .status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.admin-app .status-success {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #d1fae5;
+}
+
+.admin-app .status-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Cards */
+.admin-app .card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.admin-app .card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.admin-app .card-header {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: white;
+  padding: 32px 40px;
+}
+
+.admin-app .card-header h1,
+.admin-app .card-header h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.admin-app .card-body {
+  padding: 40px;
+}
+
+/* Action Cards */
+.admin-app .action-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-app .action-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.admin-app .action-card:hover {
+  border-color: #a78bfa;
+  background: #f5f3ff;
+  color: #6d28d9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.admin-app .action-icon {
+  width: 48px;
+  height: 48px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.admin-app .action-card:hover .action-icon {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.admin-app .action-content {
+  flex: 1;
+}
+
+.admin-app .action-title {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.admin-app .action-description {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Status System */
+.admin-app .status-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-app .status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.admin-app .status-item:last-child {
+  border-bottom: none;
+}
+
+.admin-app .status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-app .status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.admin-app .status-online {
+  background: #10b981;
+  box-shadow: 0 0 0 3px #d1fae5;
+}
+
+.admin-app .status-neutral {
+  background: #9ca3af;
+}
+
+.admin-app .backup-time {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Forms */
+.admin-app .form-grid {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.admin-app .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-app .form-field label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+}
+
+.admin-app input,
+.admin-app select {
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.admin-app input:focus,
+.admin-app select:focus {
+  outline: none;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* Alert */
+.admin-app .alert {
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 16px 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-app .alert-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Buttons */
+.admin-app .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-app .btn-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.admin-app .btn-primary:hover {
+  background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.admin-app .btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.admin-app .btn-secondary:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* Loading */
+.admin-app .loading-spinner {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f3f4f6;
+  border-top-color: #7c3aed;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.admin-app .empty-state {
+  text-align: center;
+  padding: 60px 40px;
+  color: #6b7280;
+}
+
+/* Table */
+.admin-app .table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  margin-top: 32px;
+}
+
+.admin-app table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.admin-app thead {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+}
+
+.admin-app thead th {
+  padding: 20px 32px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: #5b21b6;
+  border-bottom: 2px solid #ddd6fe;
+}
+
+.admin-app tbody td {
+  padding: 20px 32px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+  color: #374151;
+}
+
+.admin-app tbody tr:hover {
+  background: #f9fafb;
+}
+
+.admin-app .actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .admin-content-wrapper {
+    padding: 32px 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .admin-main-content {
+    margin-left: 0;
+    width: 100vw;
+  }
+  
+  .admin-content-wrapper {
+    padding: 24px 32px;
+  }
+  
+  .admin-app .lg\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-content-wrapper {
+    padding: 20px 24px;
+  }
+  
+  .admin-app .md\:grid-cols-4,
+  .admin-app .lg\:grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-app .lg\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-app .stats-card {
+    padding: 24px;
+    min-height: 140px;
+  }
+  
+  .admin-app .stats-value {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-content-wrapper {
+    padding: 16px 20px;
+  }
+  
+  .admin-app .page-title {
+    font-size: 1.875rem;
+  }
+  
+  .admin-app .card-header,
+  .admin-app .card-body {
+    padding: 24px;
+  }
+}
+/* Ensure CRUD pages use the full content width */
+.admin-app .main-body,
+.admin-app .page-section {
+  width: 100%;
+}
+
+/* Two-column layout for CRUD pages: left form, right list */
+.admin-app .page-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Stretch all admin cards to container width and override any legacy constraints */
+.admin-app .card,
+.admin-app .form-card,
+.admin-app .content-card {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Make inputs/selects expand — avoids narrow forms */
+.admin-app .form-grid { 
+  display: grid; 
+  gap: 16px; 
+}
+.admin-app input,
+.admin-app select,
+.admin-app textarea {
+  width: 100%;
+}
+
+/* Tables always full width */
+.admin-app .table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Responsive collapse to single column on smaller screens */
+@media (max-width: 1024px) {
+  .admin-app .page-grid { grid-template-columns: 1fr; }
+}
+
+/* Single-column stack layout for CRUD pages */
+.admin-app .page-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+/* Ensure the cards stretch the full width */
+.admin-app .page-stack .card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+/* Ensure stacked layout sections expand full width */
+.admin-app .main-body { width: 100%; }
+
+/* Add breathing room between stacked cards on CRUD pages */
+.admin-app .main-body .card + .card { margin-top: 2rem; }

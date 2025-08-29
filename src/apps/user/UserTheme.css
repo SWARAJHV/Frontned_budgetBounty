@@ -1,0 +1,25 @@
+.user-app {
+  /* User Color Palette */
+  --user-purple-main: #6a0dad;
+  --user-purple-light: #a855f7;
+  --user-bg-light: #f9f6ff;
+  
+  --user-text-primary: #1f2937;
+  --user-text-secondary: #6b7280;
+  --user-border-color: #e5e7eb;
+  --user-white: #ffffff;
+  
+  --user-success-color: #22c55e;
+  --user-error-color: #ef4444;
+  --user-warning-color: #f59e0b;
+  
+  /* User shadows */
+  --user-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --user-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --user-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  
+  /* User border radius */
+  --user-radius-sm: 6px;
+  --user-radius-md: 8px;
+  --user-radius-lg: 12px;
+}

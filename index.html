@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rewards System</title>
+    <style>
+      :root{--bg:#f7f6fb;--panel:#fff;--ink:#14131a;--ink-2:#6b6a77;--brand:#5b33a5;--brand-2:#6d4ae0}
+      *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--ink)}
+      a{color:inherit;text-decoration:none}
+      .shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+      .sidebar{background:#1b1031;color:#fff;padding:24px 16px}
+      .side-title{font-size:22px;margin:0 0 16px}
+      .menu{display:grid;gap:12px}
+      .menu a{display:block;padding:12px 14px;border-radius:12px;background:#36245f;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+      .menu a.active{background:#6d4ae0}
+      .main{padding:28px}
+      .card{background:var(--panel);border-radius:16px;box-shadow:0 10px 26px rgba(0,0,0,.07);padding:16px;margin-bottom:18px}
+      .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .field{display:grid}
+      .field label{font-size:12px;color:var(--ink-2)}
+      .field input{padding:10px 12px;border-radius:10px;border:1px solid #ddd;outline:none}
+      .btn{background:#eee;border:none;padding:9px 12px;border-radius:9px;cursor:pointer}
+      .btn.brand{background:var(--brand);color:#fff}
+      .btn.ghost{background:#f1eaff}
+      .btn.danger{background:#e54;color:#fff}
+      table{width:100%;border-collapse:collapse}
+      th,td{padding:10px 8px;border-bottom:1px solid #f0eff4;text-align:left}
+      th{color:#1a1830}
+      .muted{color:var(--ink-2)}
+      .space{height:8px}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

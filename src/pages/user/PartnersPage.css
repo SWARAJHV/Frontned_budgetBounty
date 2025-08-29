@@ -1,0 +1,115 @@
+.partners-page {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .partners-header {
+    text-align: center;
+    padding: 1rem 0 3rem 0;
+  }
+  
+  .partners-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .partners-header .intro-text {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  /* --- Card Styles --- */
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* The top part of the card (text and button) */
+  .card-main-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .card h3 {
+    margin-top: 0;
+    color: var(--purple-main);
+    font-size: 1.5rem;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    flex-grow: 1;
+  }
+  
+  .card .btn {
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+  
+  /* --- New styles for the collapsible logo container --- */
+  .partner-logo-container {
+    max-height: 0; /* Initially collapsed */
+    overflow: hidden;
+    background-color: var(--bg-light);
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Smooth animation */
+    padding: 0 2rem;
+    border-top: 1px solid transparent;
+  }
+  
+  .partner-logo-container.expanded {
+    max-height: 100px; /* Animate to this height when open */
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  /* The inner div that actually scrolls */
+  .logo-scroller {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .logo-scroller::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mini-logo {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Prevents logos from shrinking */
+  }
+  
+  .mini-logo svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }

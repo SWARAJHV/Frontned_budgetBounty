@@ -1,0 +1,54 @@
+.dashboard {
+  text-align: center;
+}
+
+/* Change the color of the "Hi Alex Doe," heading */
+.dashboard h2 {
+  color: var(--purple-main); /* Changed to the main purple color */
+}
+
+.intro-text {
+  max-width: 600px;
+  margin: 10px auto 20px;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 40px;
+  flex: 1 1 300px;
+  font-size: 1.3rem;
+  min-height: 180px;
+  max-width: 350px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: var(--purple-main);
+}
+
+.card p {
+  /* color property removed so it uses the default black */
+}
+
+.logged-out-container {
+  text-align: center;
+  margin-top: 50px;
+  color: var(--purple-main);
+}

@@ -1,0 +1,74 @@
+.user-app {
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--user-bg-light);
+}
+
+.user-content {
+  padding: 20px;
+}
+
+/* User-specific styles */
+.user-app .dashboard {
+  text-align: center;
+}
+
+.user-app .card-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.user-app .card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  flex: 1 1 300px;
+  font-size: 1.3rem;
+  min-height: 180px;
+  max-width: 350px;
+  transition: transform 0.2s ease;
+}
+
+.user-app .card:hover {
+  transform: translateY(-5px);
+}
+
+.user-app .card h3 {
+  color: var(--user-purple-main);
+}
+
+.user-app .card p {
+  color: #555;
+}
+
+/* User buttons */
+.user-app .btn {
+  display: inline-block;
+  background: var(--user-purple-main);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.user-app .btn:hover {
+  background: var(--user-purple-light);
+  transform: translateY(-2px);
+}
+
+.user-app .intro-text {
+  max-width: 600px;
+  margin: 10px auto 20px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  text-align: center;
+}
