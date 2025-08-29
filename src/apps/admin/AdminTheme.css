@@ -1,0 +1,46 @@
+.admin-app {
+  /* Admin Color Palette - Hardcoded values */
+  --admin-primary-400: #a78bfa;
+  --admin-primary-500: #8b5cf6;
+  --admin-primary-600: #7c3aed;
+  --admin-primary-700: #6d28d9;
+  --admin-primary-800: #5b21b6;
+  --admin-primary-900: #4c1d95;
+  --admin-primary-50: #f5f3ff;
+  --admin-primary-100: #ede9fe;
+  --admin-primary-200: #ddd6fe;
+  
+  --admin-gray-50: #f9fafb;
+  --admin-gray-100: #f3f4f6;
+  --admin-gray-200: #e5e7eb;
+  --admin-gray-300: #d1d5db;
+  --admin-gray-400: #9ca3af;
+  --admin-gray-500: #6b7280;
+  --admin-gray-600: #4b5563;
+  --admin-gray-700: #374151;
+  --admin-gray-800: #1f2937;
+  --admin-gray-900: #111827;
+  
+  --admin-success-50: #ecfdf5;
+  --admin-success-500: #10b981;
+  --admin-success-600: #059669;
+  
+  --admin-error-50: #fef2f2;
+  --admin-error-500: #ef4444;
+  --admin-error-600: #dc2626;
+  
+  --admin-warning-50: #fffbeb;
+  --admin-warning-500: #f59e0b;
+  
+  /* Admin Shadows */
+  --admin-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --admin-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --admin-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --admin-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  
+  /* Admin Border Radius */
+  --admin-radius-sm: 6px;
+  --admin-radius-md: 8px;
+  --admin-radius-lg: 12px;
+  --admin-radius-xl: 16px;
+}

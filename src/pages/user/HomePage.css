@@ -1,0 +1,69 @@
+.home-container {
+    background: #662D91;
+    min-height: 100vh;
+    color: #fff;
+    text-align: left;
+    padding: 40px;
+    position: relative;
+  }
+  
+  .main-section {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .highlight {
+    text-decoration: underline;
+    background: #FFD700;
+    color: #fff;
+  }
+  
+  .app-badges {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+  }
+  
+  .badge {
+    height: 48px;
+  }
+  
+  .illustration {
+    margin: 25px 0;
+  }
+  
+  .reward-img {
+    width: 180px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  }
+  
+  .access-btn {
+    background: #fff;
+    color: #662D91;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    padding: 12px 30px;
+    margin-top: 25px;
+    cursor: pointer;
+  }
+  
+  .chat-btn {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: #5e238d;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+  

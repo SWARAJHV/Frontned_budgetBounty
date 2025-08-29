@@ -1,0 +1,58 @@
+.transactions-page h2 {
+    text-align: center;
+    color: var(--purple-main);
+    margin-bottom: 25px;
+  }
+  
+  .transaction-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+  
+  .transaction-table th,
+  .transaction-table td {
+    padding: 15px 20px;
+    text-align: left;
+  }
+  
+  .transaction-table thead {
+    background-color: var(--bg-light);
+    color: var(--purple-main);
+    font-weight: bold;
+  }
+  
+  .transaction-table tbody tr {
+    border-bottom: 1px solid #eee;
+  }
+  
+  .transaction-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  
+  .transaction-table tbody tr:nth-child(even) {
+    background-color: #fdfaff;
+  }
+  
+  .points-earned {
+    color: #22c55e; /* Green */
+    font-weight: 500;
+  }
+  
+  .points-spent {
+    color: #ef4444; /* Red */
+    font-weight: 500;
+  }
+  /* Subtle polish for cards/tables */
+:root {
+  --ring-shadow: 0 1px 1px rgba(0,0,0,.04), 0 8px 24px rgba(99, 102, 241, .06);
+}
+table { border-spacing: 0; }
+thead th { position: sticky; top: 0; backdrop-filter: blur(6px); }
+.bg-white\/80 { box-shadow: var(--ring-shadow); }
+
