@@ -7,6 +7,7 @@ export default function CrudPage({
   path,
   idKey = "id",
   fieldDefs = [],
+  listFields = null, // NEW: Add listFields prop
 }) {
   const empty = useMemo(() => {
     const e = {};
@@ -111,13 +112,21 @@ export default function CrudPage({
     }
   };
 
+  // MODIFIED: Filter keys based on listFields prop
   const allKeys = useMemo(() => {
     const base = new Set(fieldDefs.map((f) => f.name));
     rows.forEach((r) => Object.keys(r || {}).forEach((k) => base.add(k)));
-    const arr = Array.from(base);
+    
+    let arr = Array.from(base);
+    
+    // NEW: Filter keys if listFields is provided
+    if (listFields && Array.isArray(listFields) && listFields.length > 0) {
+      arr = arr.filter(key => listFields.includes(key));
+    }
+    
     arr.sort((a, b) => (a === idKey ? -1 : b === idKey ? 1 : a.localeCompare(b)));
     return arr;
-  }, [rows, fieldDefs, idKey]);
+  }, [rows, fieldDefs, idKey, listFields]); // NEW: Added listFields dependency
 
   // NEW: filtered + sorted rows
   const filteredRows = useMemo(() => {

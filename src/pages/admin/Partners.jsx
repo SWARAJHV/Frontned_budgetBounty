@@ -1,3 +1,5 @@
+//3.changed partners.jsx
+
 import CrudPage from "./CrudPage";
 
 const fieldDefs = [
@@ -23,6 +25,7 @@ export default function Partners() {
       path="/partners"
       idKey="partnerId"
       fieldDefs={fieldDefs}
+      listFields={["partnerId", "name", "apiKey"]}  // 👈 show all 3 columns
     />
   );
 }
