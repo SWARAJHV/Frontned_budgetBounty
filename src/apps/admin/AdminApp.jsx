@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-=======
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
->>>>>>> 63ae212327fb4a8324bb81c92036993116df5e4c
 
 // Import admin components
 import Sidebar from '../../components/admin/Sidebar';
@@ -20,7 +15,6 @@ import Redemptions from '../../pages/admin/Redemptions';
 // Import ONLY admin CSS
 import './AdminApp.css';
 import './AdminTheme.css';
-<<<<<<< HEAD
 import api from '../../api/client';
 
 export default function AdminApp({ user, onLogout }) {
@@ -63,10 +57,6 @@ export default function AdminApp({ user, onLogout }) {
     return <div className="admin-app">Access denied. Redirecting...</div>;
   }
 
-=======
-
-export default function AdminApp({ user, onLogout }) {
->>>>>>> 63ae212327fb4a8324bb81c92036993116df5e4c
   return (
     <div className="admin-app">
       <div className="admin-app-container">
@@ -89,8 +79,4 @@ export default function AdminApp({ user, onLogout }) {
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 63ae212327fb4a8324bb81c92036993116df5e4c
