@@ -117,6 +117,14 @@ export default function CrudPage({
     const base = new Set(fieldDefs.map((f) => f.name));
     rows.forEach((r) => Object.keys(r || {}).forEach((k) => base.add(k)));
     
+    let arr = Array.from(base);
+    
+    // NEW: Filter keys if listFields is provided
+    if (listFields && Array.isArray(listFields) && listFields.length > 0) {
+      arr = arr.filter(key => listFields.includes(key));
+    }
+    
+    
   
     
     // NEW: Filter keys if listFields is provided
