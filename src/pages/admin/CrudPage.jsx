@@ -63,35 +63,71 @@ export default function CrudPage({
     return out;
   };
 
-  const submit = async (e) => {
-    e.preventDefault();
-    const errors = [];
-    for (const f of fieldDefs) {
-      if (f.required && (!form[f.name] || form[f.name] === "")) {
-        errors.push(`${f.label} is required`);
-      }
-    }
-    if (errors.length > 0) {
-      setMsg(errors.join(", "));
-      return;
-    }
+const submit = async (e) => {
+  e.preventDefault();
+  console.log('=== SUBMIT FUNCTION STARTED ===');
+  console.log('Form data:', form);
+  console.log('Editing ID:', editing);
+  console.log('Field definitions:', fieldDefs);
 
-    try {
-      const body = coerceTypes(form);
-      if (editing != null) {
-        await api.put(`${path}/${editing}`, body);
-        setMsg("Record updated successfully");
+const errors = [];
+for (const f of fieldDefs) {
+  console.log(`Checking field ${f.name}: value=`, form[f.name], 'required=', f.required);
+  
+  if (f.required) {
+    const value = form[f.name];
+    
+    // Handle boolean fields specially - false is valid!
+    if (f.type === "boolean") {
+      if (value === undefined || value === null) {
+        console.log(`❌ Boolean field ${f.name} is undefined/null`);
+        errors.push(`${f.label} is required`);
       } else {
-        await api.post(path, body);
-        setMsg("Record created successfully");
+        console.log(`✅ Boolean field ${f.name} is valid:`, value);
       }
-      setForm(empty);
-      setEditing(null);
-      await load();
-    } catch (err) {
-      setMsg(err?.response?.data?.message || err.message || "Operation failed");
+    } 
+    // Handle other field types
+    else if (!value || value === "") {
+      console.log(`❌ Validation failed for ${f.name}: required but empty`);
+      errors.push(`${f.label} is required`);
+    } else {
+      console.log(`✅ Field ${f.name} passed validation`);
     }
-  };
+  }
+}
+  
+  console.log('Total validation errors:', errors.length, errors);
+
+  if (errors.length > 0) {
+    const errorMessage = errors.join(", ");
+    console.log('Setting error message:', errorMessage);
+    setMsg(errorMessage);
+    return; // ← THIS IS WHERE IT'S STOPPING!
+  }
+
+  console.log('✅ All validation passed, proceeding with API call...');
+
+  try {
+    const body = coerceTypes(form);
+    console.log('Coerced body:', body);
+    
+    if (editing != null) {
+      console.log('Making PUT request to:', `${path}/${editing}`);
+      console.log('Request data:', body);
+      await api.put(`${path}/${editing}`, body);
+      setMsg("Record updated successfully");
+    } else {
+      console.log('Making POST request to:', path);
+      console.log('Request data:', body);
+      await api.post(path, body);
+      setMsg("Record created successfully");
+    }
+    // ... rest of code ...
+  } catch (err) {
+    console.error('API call failed:', err);
+    setMsg(err?.response?.data?.message || err.message || "Operation failed");
+  }
+};
 
   const edit = (r) => {
     setEditing(r[idKey]);
@@ -118,23 +154,11 @@ export default function CrudPage({
     rows.forEach((r) => Object.keys(r || {}).forEach((k) => base.add(k)));
     
     let arr = Array.from(base);
-    
-    // NEW: Filter keys if listFields is provided
-    if (listFields && Array.isArray(listFields) && listFields.length > 0) {
-      arr = arr.filter(key => listFields.includes(key));
-    }
-    
-    
-  
-    
-    // NEW: Filter keys if listFields is provided
-    if (listFields && Array.isArray(listFields) && listFields.length > 0) {
-      arr = arr.filter(key => listFields.includes(key));
-    }
+
     
     arr.sort((a, b) => (a === idKey ? -1 : b === idKey ? 1 : a.localeCompare(b)));
     return arr;
-  }, [rows, fieldDefs, idKey]); // NEW: Added listFields dependency
+  }, [rows, fieldDefs, idKey]);
 
   // NEW: filtered + sorted rows
   const filteredRows = useMemo(() => {

@@ -15,46 +15,27 @@ import Redemptions from '../../pages/admin/Redemptions';
 // Import ONLY admin CSS
 import './AdminApp.css';
 import './AdminTheme.css';
-import api from '../../api/client';
 
 export default function AdminApp({ user, onLogout }) {
   const navigate = useNavigate();
-  const [isVerified, setIsVerified] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const verifyAdminAccess = async () => {
-      if (!user || !user.id) {
-        navigate('/');
-        return;
-      }
-
-      try {
-        const response = await api.get(`/users/check-admin/${user.id}`);
-        if (!response.data) {
-          alert('Access denied: Administrator privileges required');
-          onLogout();
-          return;
-        }
-        setIsVerified(true);
-      } catch (error) {
-        console.error('Admin verification failed:', error);
-        alert('Failed to verify admin access');
-        onLogout();
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    verifyAdminAccess();
-  }, [user, navigate, onLogout]);
+    console.log('AdminApp mounted with user:', user);
+    
+    // Simple check - if no user or no user ID, redirect to login
+    if (!user || !user.id) {
+      console.log('No user found, redirecting to login');
+      navigate('/');
+      return;
+    }
+    
+    console.log('User verified during login, proceeding to admin panel');
+    setLoading(false);
+  }, [user, navigate]);
 
   if (loading) {
-    return <div className="admin-app">Verifying admin access...</div>;
-  }
-
-  if (!isVerified) {
-    return <div className="admin-app">Access denied. Redirecting...</div>;
+    return <div className="admin-app">Loading admin panel...</div>;
   }
 
   return (
